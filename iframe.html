@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IFrame Content</title>
+  <style>
+    p {
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <p id="message">Waiting for a message...</p>
+
+  <script>
+    window.addEventListener('message', (event) => {
+      if (event.data.type === 'countUpdate') {
+        const messageElement = document.getElementById('message');
+        messageElement.textContent = `Count received: ${event.data.value}`;
+      }
+    });
+  </script>
+
+</body>
+</html>
